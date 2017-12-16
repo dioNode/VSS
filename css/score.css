@@ -9,12 +9,13 @@
 	}
 
 	#bot-wrapper {
-		height: calc(100vh - var(--top-height));
+		height: var(--bot-wrapper-height);
 	}
 
 .scoreboard {
 	--board-width: 40%;
 	--board-height: 90%;
+	padding: 0;
 	position: relative;
 	width: var(--board-width);
 	height: var(--board-height);
@@ -22,6 +23,9 @@
 	background-color: orange;
 	text-align: center;
 	float: left;
+	margin-bottom: calc((100% - var(--board-height))/4);
+	margin-top: calc((100% - var(--board-height))/4);
+	top: 0;
 }
 
 	.scoreboard .top-details-container {
@@ -67,3 +71,49 @@
 			padding: 0;
 			margin: 0;
 		}
+
+#bot-wrapper {
+	--bot-wrapper-height: calc(100vh - var(--top-height));
+	--server-width: 30%;
+}
+
+	#bot-wrapper .server-container {
+		height: 90%;
+		width: var(--server-width);
+		background-color: gray;
+		margin: 0;
+	}
+		
+		#bot-wrapper .server-container.left {
+			float: left;
+		}
+		#bot-wrapper .server-container.right {
+			float: right;
+		}
+
+		#bot-wrapper .server-container .player-number {
+			background-color: orange;
+		}
+
+		#bot-wrapper .server-container .player-name {
+			background-color: orange;
+		}
+
+
+	#bot-wrapper .middle-container {
+
+	}
+		#bot-wrapper .middle-container .top-container {
+
+		}
+
+		#bot-wrapper .middle-conatiner .bot-container {
+
+		}
+			#bot-wrapper .middle-container .bot-container #home {
+
+			}
+
+			#bot-wrapper .middle-container .bot-container #subs {
+				
+			}

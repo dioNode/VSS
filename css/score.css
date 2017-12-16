@@ -1,0 +1,69 @@
+#top-wrapper, #bot-wrapper {
+	--top-height: 70vh;
+	width: 100%;
+	position: relative;
+}
+
+	#top-wrapper {
+		height: var(--top-height);
+	}
+
+	#bot-wrapper {
+		height: calc(100vh - var(--top-height));
+	}
+
+.scoreboard {
+	--board-width: 40%;
+	--board-height: 90%;
+	position: relative;
+	width: var(--board-width);
+	height: var(--board-height);
+	margin: calc((50% - var(--board-width))/2);
+	background-color: orange;
+	text-align: center;
+	float: left;
+}
+
+	.scoreboard .top-details-container {
+		width: 100%;
+		height: 20%;
+	}
+		.scoreboard .top-details-container .set-score-text {
+			background-color: red;
+			width: 20%;
+			height:100%;
+		}
+		.scoreboard .top-details-container .foul-timeout-container {
+			background-color: yellow;
+			width: 30%;
+			height:100%;
+		}
+
+		.scoreboard.left .top-details-container .set-score-text {
+			float: right;
+		}
+		.scoreboard.left .top-details-container .foul-timeout-container {
+			float: left;
+		}
+		.scoreboard.right .top-details-container .set-score-text {
+			float: left;
+		}
+		.scoreboard.right .top-details-container .foul-timeout-container {
+			float: right;
+		}
+
+	.scoreboard .score-text {
+		color: white;
+	}
+
+		.scoreboard .score-text h1 {
+			font-size: 30vh;
+			padding: 0;
+			margin: 0;
+		}
+
+		.scoreboard .score-text h2 {
+			font-size: 4vh;
+			padding: 0;
+			margin: 0;
+		}

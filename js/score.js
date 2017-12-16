@@ -7,29 +7,37 @@ $(document).ready(function() {
 	$("#scoreB").text(sessionStorage.ScoreBVal);
 	$("#setA").text(sessionStorage.setAVal);
 	$("#setB").text(sessionStorage.setBVal);
+	$("outA").text(sessionStorage.timeoutsA);
+	$("outB").text(sessionStorage.timeoutsB);
 	
 	startGame();
 });
+
+function ClickingStuff(){
+
+	 $("#teamA").click(function() {
+		updateScore('a');
+	});
+	$("#teamB").click(function() {
+		updateScore('b');
+	});
+	$("#outA").click(function() {
+		callTimeOut('a');
+	});
+	$("#outB").click(function() {
+		callTimeOut('b');
+	})
+}
 
 function startGame(){
 	if(typeof(Storage) !== "undefined"){
 			if (sessionStorage.inprog){
 				if (sessionStorage.inprog == "going"){
-					$("#teamA").click(function() {
-						updateScore('a');
-					});
-					$("#teamB").click(function(){
-						updateScore('b');
-					});
+					ClickingStuff();
 				}
 			}else {
 				sessionStorage.inprog = "going";
-				$("#teamA").click(function() {
-					updateScore('a');
-				});
-				$("#teamB").click(function(){
-					updateScore('b');
-				});
+				ClickingStuff();
 			}
 	}
 }
@@ -69,6 +77,9 @@ function updateScore(team) {
 				if (Number(sessionStorage.ScoreAVal) >= 25){
 					sessionStorage.ScoreAVal = 0;
 					sessionStorage.ScoreBVal = 0;
+					sessionStorage.timeoutsA = 2;
+					sessionStorage.timeoutsB = 2;
+			
 					if (sessionStorage.setAVal){
 						sessionStorage.setAVal = Number(sessionStorage.setAVal)+1;
 					}
@@ -102,7 +113,29 @@ function updateScore(team) {
 			$("#setB").text(sessionStorage.setBVal);
 			break;
 	}
-	
-
-	
 }
+
+function callTimeOut(team){
+
+		if (team == "a"){
+			if(typeof(Storage) !== "undefined"){
+				if (Number(sessionStorage.timeoutsA) <= 0){
+					sessionStorage.timeoutsA = Number(sessionStorage.timeoutsA)-1;
+					$("#outA").prop("onclick",null).off("click");
+				}else {
+					sessionStorage.timeoutsA = 2;
+				}
+			}
+		} else	if (team=="b"){
+			if(typeof(Storage) !== "undefined"){
+				if (Number(sessionStorage.timeoutsB)<=0){
+					sessionStorage.timeoutsB = Number(sessionStorage.timeoutsB)-1;
+					$("#outB").prop("onclick",null).off("click");
+				}else {
+					sessionStorage.timeoutsB = 2;
+				}
+			}
+		}
+		$("outA").text(sessionStorage.timeoutsA);
+		$("outB").text(sessionStorage.timeoutsB);
+	}

@@ -1,3 +1,6 @@
+body{
+}
+
 #top-wrapper, #bot-wrapper {
 	--top-height: 70vh;
 	width: 100%;
@@ -12,6 +15,25 @@
 		height: var(--bot-wrapper-height);
 	}
 
+#arrow {
+	position: absolute;
+	left: 150vh;
+	top: 40vh;
+	width: 10vh;
+}
+
+#arrow img {
+	width: 100%;
+	height: auto;
+}
+
+#clock {
+	position: absolute;
+	left: 148vh;
+	top: 20vh;
+	width: 10vh;
+}
+
 .scoreboard {
 	--board-width: 40%;
 	--board-height: 90%;
@@ -20,29 +42,42 @@
 	width: var(--board-width);
 	height: var(--board-height);
 	margin: calc((50% - var(--board-width))/2);
-	background-color: orange;
+	background-color: #0f1626;
 	text-align: center;
 	float: left;
 	margin-bottom: calc((100% - var(--board-height))/4);
 	margin-top: calc((100% - var(--board-height))/4);
 	top: 0;
 	cursor: pointer;
+	border-radius: 3vh;
+	overflow: hidden;
+	color: #f5f5f5;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+
+
 
 	.scoreboard .top-details-container {
 		width: 100%;
 		height: 20%;
+
 	}
 		.scoreboard .top-details-container .set-score-text {
-			background-color: red;
+			background-color: coral;
+			width: 20%;
+			height:100%;
+			font-size: 10vh;	
+		}
+		.scoreboard .top-details-container .foul-timeout-container {
+			background-color: #AB987A;
 			width: 20%;
 			height:100%;
 		}
-		.scoreboard .top-details-container .foul-timeout-container {
-			background-color: yellow;
-			width: 30%;
-			height:100%;
-		}
+			.scoreboard .top-details-container .foul-timeout-container .timeout-value{
+				width: 100%;
+				height: 100%;
+				font-size: 7vh;
+			}
 
 		.scoreboard.left .top-details-container .set-score-text {
 			float: right;

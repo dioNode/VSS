@@ -26,6 +26,7 @@
 	margin-bottom: calc((100% - var(--board-height))/4);
 	margin-top: calc((100% - var(--board-height))/4);
 	top: 0;
+	cursor: pointer;
 }
 
 	.scoreboard .top-details-container {

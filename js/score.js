@@ -3,13 +3,7 @@ $(document).ready(function() {
 	console.log("working");
 	mode = "norm";
 	
-	$("#scoreA").text(sessionStorage.ScoreAVal);
-	$("#scoreB").text(sessionStorage.ScoreBVal);
-	$("#setA").text(sessionStorage.setAVal);
-	$("#setB").text(sessionStorage.setBVal);
-	$("outA").text(sessionStorage.timeoutsA);
-	$("outB").text(sessionStorage.timeoutsB);
-	
+	updateText();	
 	startGame();
 });
 
@@ -21,12 +15,16 @@ function ClickingStuff(){
 	$("#teamB").click(function() {
 		updateScore('b');
 	});
-	$("#outA").click(function() {
+	if ((Number(sessionStorage.timeoutsA) > 0) || (!sessionStorage.timeoutsA)){
+		$("#outA").click(function() {
 		callTimeOut('a');
-	});
-	$("#outB").click(function() {
-		callTimeOut('b');
-	})
+		});
+	}
+	if ((Number(sessionStorage.timeoutsB) > 0) || (!sessionStorage.timeoutsB)){
+		$("#outB").click(function() {
+			callTimeOut('b');
+		});
+	}
 }
 
 function startGame(){
@@ -107,35 +105,43 @@ function updateScore(team) {
 							}
 					}
 			}
-			$("#scoreA").text(sessionStorage.ScoreAVal);
-			$("#scoreB").text(sessionStorage.ScoreBVal);
-			$("#setA").text(sessionStorage.setAVal);
-			$("#setB").text(sessionStorage.setBVal);
+			updateText();
 			break;
 	}
 }
 
 function callTimeOut(team){
-
 		if (team == "a"){
 			if(typeof(Storage) !== "undefined"){
-				if (Number(sessionStorage.timeoutsA) <= 0){
-					sessionStorage.timeoutsA = Number(sessionStorage.timeoutsA)-1;
-					$("#outA").prop("onclick",null).off("click");
+				if (!sessionStorage.timeoutsA){
+					sessionStorage.timeoutsA = 1;
 				}else {
-					sessionStorage.timeoutsA = 2;
+					sessionStorage.timeoutsA = Number(sessionStorage.timeoutsA)-1;
+					if (Number(sessionStorage.timeoutsA) <=0){
+						$("#outA").prop("onclick",null).off("click");
+					}
 				}
 			}
 		} else	if (team=="b"){
 			if(typeof(Storage) !== "undefined"){
-				if (Number(sessionStorage.timeoutsB)<=0){
-					sessionStorage.timeoutsB = Number(sessionStorage.timeoutsB)-1;
-					$("#outB").prop("onclick",null).off("click");
+				if (!sessionStorage.timeoutsB){
+					sessionStorage.timeoutsB = 1;
 				}else {
-					sessionStorage.timeoutsB = 2;
+					sessionStorage.timeoutsB = Number(sessionStorage.timeoutsB)-1;
+					if (Number(sessionStorage.timeoutsB) <=0) {
+						$("#outB").prop("onclick",null).off("click");
+					}
 				}
 			}
 		}
-		$("outA").text(sessionStorage.timeoutsA);
-		$("outB").text(sessionStorage.timeoutsB);
+		updateText();
 	}
+
+function updateText(){
+	$("#scoreA").text(sessionStorage.ScoreAVal);
+	$("#scoreB").text(sessionStorage.ScoreBVal);
+	$("#setA").text(sessionStorage.setAVal);
+	$("#setB").text(sessionStorage.setBVal);
+	$("#outAVal").text(sessionStorage.timeoutsA);
+	$("#outBVal").text(sessionStorage.timeoutsB);
+}

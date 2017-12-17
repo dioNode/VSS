@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<section id="top-wrapper">
-			<div class="scoreboard left" id="teamA">
+			<span class="scoreboard left" id="teamA">
 				<div class="top-details-container"/>
 					<div class="set-score-text" id="setA"/>
 						0
@@ -26,14 +26,14 @@
 					<h1 id="scoreA">0</h1>
 					<h2>Aces United</h2>
 				</div>
-			</div>
-			<div id="arrow">
-				<img src="../img/arrow.png">
-			</div>
-			<div id="clock">
-				<h1>00:00</h1>
-			</div>
-			<div class="scoreboard right" id="teamB">
+			</span>
+			<span id="clocks-an-arrow">
+				<div id="clock">
+					<h1>00:00</h1>
+				</div>
+				<img id="arrow" src="../img/arrow.png">
+			</span>
+			<span class="scoreboard right" id="teamB">
 				<div class="top-details-container"/>
 					<div class="set-score-text" id="setB"/>
 						0
@@ -49,10 +49,18 @@
 					<h1 id="scoreB">0</h1>
 					<h2>Dragons</h2>
 				</div>
-			</div>
+			</span>
 
 		</section>
-		<section id="bot-wrapper">
+		<section id="mid-wrapper">
+			<div id="service-left">
+				<h1>Service: Dion Lao(4)</h1>
+			</div>
+			<div id="service-right">
+				<h1>Service: Peter Ransay(114)</h1>
+			</div>
+		</section>
+		<!-- <section id="bot-wrapper">
 			<div class="left server-container">
 				<div class="player-number">4</div>
 				<div class="player-name">Dion Lao</div>
@@ -69,7 +77,7 @@
 				</div>
 			</div>
 
-		</section>
+		</section> -->
 
 	</body>
 </html>
